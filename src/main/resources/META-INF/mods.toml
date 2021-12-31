@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[38,)"
+issueTrackerURL="https://github.com/Mrbysco/Stonks/issues"
+license="MIT"
+
+[[mods]]
+modId="stonks"
+logoFile="stonks.png"
+version="${file.jarVersion}"
+displayName="Stonks"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/stonks"
+authors="Mrbysco"
+description='''
+Villager stonks!
+'''
+[[dependencies.stonks]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.18,1.19)"
+ordering="NONE"
+side="BOTH"
