@@ -32,7 +32,7 @@ public class VillagerModelMixin<T extends Entity>{
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 		float f = 0.5F;
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().create().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.ZERO);
 		PartDefinition hat = head.addOrReplaceChild("hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(f)), PartPose.offset(0.0F, 0.1F, 0.0F));
 		hat.addOrReplaceChild("hat_rim", CubeListBuilder.create().texOffs(30, 47).addBox(-8.0F, -9.0F, -7.0F, 16.0F, 16.0F, 1.0F, new CubeDeformation(0.1F)), PartPose.offsetAndRotation(0.0F, -6.0F, -4.0F, 3.1416F, 0.0F, 0.0F));
 
@@ -52,13 +52,16 @@ public class VillagerModelMixin<T extends Entity>{
 		if (villager instanceof AbstractVillager abstractVillager) {
 			head.setRotation(0, 0, 0);
 
-			if (abstractVillager.getMainHandItem().isEmpty()) {
-				if(head.y <= 9.4F) {
-					head.y += 0.05F;
-				}
-			} else {
-				if(head.y >= 0) {
-					head.y -= 0.05F;
+			boolean flag = abstractVillager.level.hasNearbyAlivePlayer(abstractVillager.getX(), abstractVillager.getY(), abstractVillager.getZ(), 5D);
+			if(flag) {
+				if (abstractVillager.getMainHandItem().isEmpty()) {
+					if(head.y <= 9.4F) {
+						head.y += 0.05F;
+					}
+				} else {
+					if(head.y >= 0) {
+						head.y -= 0.05F;
+					}
 				}
 			}
 
