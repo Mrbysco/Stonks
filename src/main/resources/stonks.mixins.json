@@ -8,7 +8,7 @@
   "mixins": [
   ],
   "client": [
-    "VillagerModelMixin"
+	"VillagerModelMixin"
   ],
   "injectors": {
 	"defaultRequire": 1
