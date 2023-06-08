@@ -77,7 +77,7 @@ public class VillagerModelMixin<T extends Entity> {
 		if (villager instanceof AbstractVillager abstractVillager) {
 			head.setRotation(0, 0, 0);
 
-			boolean flag = abstractVillager.level.hasNearbyAlivePlayer(abstractVillager.getX(), abstractVillager.getY(), abstractVillager.getZ(), 5D);
+			boolean flag = abstractVillager.level().hasNearbyAlivePlayer(abstractVillager.getX(), abstractVillager.getY(), abstractVillager.getZ(), 5D);
 			if (flag) {
 				if (abstractVillager.getMainHandItem().isEmpty()) {
 					if (head.y <= 9.4F) {
