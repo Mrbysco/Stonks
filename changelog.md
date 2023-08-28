@@ -1,1 +1,1 @@
-* Initial update to 1.20
+* Adjust how the mod changes the villager model so that it doesn't mess with the witch model
