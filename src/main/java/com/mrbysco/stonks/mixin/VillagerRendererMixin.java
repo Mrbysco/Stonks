@@ -16,9 +16,6 @@ public class VillagerRendererMixin {
 					target = "Lnet/minecraft/client/renderer/entity/EntityRendererProvider$Context;bakeLayer(Lnet/minecraft/client/model/geom/ModelLayerLocation;)Lnet/minecraft/client/model/geom/ModelPart;"),
 			index = 0)
 	private static ModelLayerLocation stonks_init(ModelLayerLocation location) {
-		if (ClientHandler.STONKS_VILLAGER != null) {
-			return ClientHandler.STONKS_VILLAGER;
-		}
-		return location;
+		return ClientHandler.STONKS_VILLAGER;
 	}
 }
