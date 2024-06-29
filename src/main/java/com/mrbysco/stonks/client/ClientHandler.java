@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 public class ClientHandler {
-	public static final ModelLayerLocation STONKS_VILLAGER = new ModelLayerLocation(new ResourceLocation(Stonks.MOD_ID, "villager"), "main");
+	public static final ModelLayerLocation STONKS_VILLAGER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Stonks.MOD_ID, "villager"), "main");
 
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(STONKS_VILLAGER, () -> LayerDefinition.create(createStonksMesh(), 64, 64));
