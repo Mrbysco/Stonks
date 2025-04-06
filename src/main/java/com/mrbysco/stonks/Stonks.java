@@ -11,6 +11,7 @@ public class Stonks {
 
 	public Stonks(IEventBus eventBus, Dist dist) {
 		if (dist.isClient()) {
+			eventBus.addListener(ClientHandler::registerCustomRenderData);
 			eventBus.addListener(ClientHandler::registerLayerDefinitions);
 		}
 	}

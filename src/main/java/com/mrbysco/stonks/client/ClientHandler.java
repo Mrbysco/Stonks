@@ -8,11 +8,37 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.entity.VillagerRenderer;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.context.ContextKey;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.renderstate.RegisterRenderStateModifiersEvent;
 
 public class ClientHandler {
 	public static final ModelLayerLocation STONKS_VILLAGER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Stonks.MOD_ID, "villager"), "main");
+
+	public static final ContextKey<Float> HEAD_HEIGHT = new ContextKey<>(ResourceLocation.fromNamespaceAndPath(Stonks.MOD_ID, "head_height"));
+
+	public static void registerCustomRenderData(RegisterRenderStateModifiersEvent event) {
+		event.registerEntityModifier(VillagerRenderer.class, (villager, renderState) -> {
+			CompoundTag persistentData = villager.getPersistentData();
+			ItemStack heldStack = villager.getMainHandItem();
+			float headY = persistentData.getFloat("headY");
+			if (heldStack.isEmpty()) {
+				if (headY <= 9.4F) {
+					headY += 0.2F;
+				}
+			} else {
+				if (headY >= 0) {
+					headY -= 0.2F;
+				}
+			}
+			persistentData.putFloat("headY", headY); //Needed because you can't get the render data from here so it would otherwise always be the default value
+			renderState.setRenderData(HEAD_HEIGHT, headY);
+		});
+	}
 
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(STONKS_VILLAGER, () -> LayerDefinition.create(createStonksMesh(), 64, 64));
