@@ -25,7 +25,7 @@ public class ClientHandler {
 		event.registerEntityModifier(VillagerRenderer.class, (villager, renderState) -> {
 			CompoundTag persistentData = villager.getPersistentData();
 			ItemStack heldStack = villager.getMainHandItem();
-			float headY = persistentData.getFloat("headY");
+			float headY = persistentData.getFloatOr("headY", 9.4F);
 			if (heldStack.isEmpty()) {
 				if (headY <= 9.4F) {
 					headY += 0.2F;
