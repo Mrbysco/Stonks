@@ -4,8 +4,6 @@
   "compatibilityLevel": "JAVA_21",
   "package": "com.mrbysco.stonks.mixin",
   "target": "@env(DEFAULT)",
-  "mixins": [
-  ],
   "client": [
     "VillagerModelMixin",
     "VillagerRendererMixin"

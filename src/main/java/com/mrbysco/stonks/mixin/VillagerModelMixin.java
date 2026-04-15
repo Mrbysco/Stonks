@@ -2,8 +2,8 @@ package com.mrbysco.stonks.mixin;
 
 import com.mrbysco.stonks.client.HeadHelper;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.VillagerModel;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.npc.VillagerModel;
 import net.minecraft.client.renderer.entity.state.VillagerRenderState;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,7 +30,7 @@ public abstract class VillagerModelMixin extends EntityModel<VillagerRenderState
 		super(root);
 	}
 
-	@Inject(method = "Lnet/minecraft/client/model/VillagerModel;<init>(Lnet/minecraft/client/model/geom/ModelPart;)V",
+	@Inject(method = "<init>(Lnet/minecraft/client/model/geom/ModelPart;)V",
 			at = @At("TAIL"))
 	private void stonks$init(ModelPart root, CallbackInfo ci) {
 		this.hat = this.head.getChild("hat");

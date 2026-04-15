@@ -10,16 +10,16 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.entity.VillagerRenderer;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.renderstate.RegisterRenderStateModifiersEvent;
 
 public class ClientHandler {
-	public static final ModelLayerLocation STONKS_VILLAGER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Stonks.MOD_ID, "villager"), "main");
+	public static final ModelLayerLocation STONKS_VILLAGER = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Stonks.MOD_ID, "villager"), "main");
 
-	public static final ContextKey<Float> HEAD_HEIGHT = new ContextKey<>(ResourceLocation.fromNamespaceAndPath(Stonks.MOD_ID, "head_height"));
+	public static final ContextKey<Float> HEAD_HEIGHT = new ContextKey<>(Identifier.fromNamespaceAndPath(Stonks.MOD_ID, "head_height"));
 
 	public static void registerCustomRenderData(RegisterRenderStateModifiersEvent event) {
 		event.registerEntityModifier(VillagerRenderer.class, (villager, renderState) -> {
